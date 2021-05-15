@@ -33,12 +33,31 @@ class Home(BoxLayout):
                 d=0.6, t="in_out_quad"
                 ).start(self_widget)
             self.open_call_box=True
+        else:            
+            Animation(
+                disabled=True,
+                opacity=0,
+                d=0.6, t="in_out_quad"
+                ).start(another_widget)
+            Animation(
+                disabled=False,
+                opacity=1,
+                size_hint_y=.5,
+                size_hint_x=.5,
+                d=0.6, t="in_out_quad"
+                ).start(self_widget)
+            self.open_call_box=False
 
 class Main(MDApp):
 
     def build(self):
         self.theme_cls.primary_palette = 'Purple'
         return Builder.load_file('templates/index.kv')
+
+    def go_to_home(self, screen_manager: ScreenManager):
+        screen_manager = screen_manager.parent.manager
+        screen_manager.transition.direction = 'up'
+        screen_manager.current = 'home'
 
     def go_to_registration(self, screen_manager: ScreenManager):
         screen_manager = screen_manager.parent.manager
@@ -47,8 +66,13 @@ class Main(MDApp):
 
     def go_to_settings(self, screen_manager: ScreenManager):
         screen_manager = screen_manager.parent.manager
-        screen_manager.transition.direction = 'left'
+        screen_manager.transition.direction = 'right'
         screen_manager.current = 'settings'
+
+    def go_to_messenger(self, screen_manager: ScreenManager):
+        screen_manager = screen_manager.parent.manager
+        screen_manager.transition.direction = 'left'
+        screen_manager.current = 'messenger'
         
     
 

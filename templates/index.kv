@@ -17,6 +17,11 @@
         Widget:
             size_hint: None, None
             height: dp(20)
+        MDFlatButton:
+            text: '<-'
+            size_hint: .5, None
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            on_release: root.animation_auth(welcome_form, auth_form)
         MDTextField:
             hint_text: "E-mail"
             mode: "rectangle"
@@ -37,6 +42,7 @@
             text: 'Отправить данные'
             size_hint: .5, None
             pos_hint: {'center_x': .5, 'center_y': .5}
+            on_release: app.go_to_messenger(root)
         Widget:
     BoxLayout:
         id: welcome_form
@@ -76,10 +82,15 @@
 
     Widget:
 
-<Registration>
+<Registration>:
     id: registration
     orientation: 'vertical'
     Widget:
+    MDFlatButton:
+        text: '<-'
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        on_release: app.go_to_home(root)
     MDTextField:
         hint_text: "Введите Ваши ФИО*"
         mode: "rectangle"
@@ -199,7 +210,7 @@ Screen:
             id: screen_manager
             Screen:
                 name: 'home'
-                Messenger:
+                Home:
             Screen:
                 name: 'registration'
                 Registration:

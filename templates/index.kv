@@ -1,0 +1,214 @@
+#:kivy 1.11.1
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import colors kivymd.color_definitions.colors
+
+<Home>
+    id: home_page
+    orientation: 'vertical'
+    Widget:
+    Widget:
+    BoxLayout:
+        id: auth_form
+        orientation: 'vertical'
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        size_hint: .5, .5
+        disable: True
+        opacity: 0
+        Widget:
+            size_hint: None, None
+            height: dp(20)
+        MDTextField:
+            hint_text: "E-mail"
+            mode: "rectangle"
+            size_hint: .5, None
+            pos_hint: {'center_x': .5, 'center_y': .5}
+        Widget:
+            size_hint: None, None
+            height: dp(20)
+        MDTextField:
+            hint_text: "Пароль"
+            mode: "rectangle"
+            size_hint: .5, None
+            pos_hint: {'center_x': .5, 'center_y': .5}
+        Widget:
+            size_hint: None, None
+            height: dp(20)
+        MDRectangleFlatButton:
+            text: 'Отправить данные'
+            size_hint: .5, None
+            pos_hint: {'center_x': .5, 'center_y': .5}
+        Widget:
+    BoxLayout:
+        id: welcome_form
+        orientation: 'vertical'
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        size_hint: .5, .5
+        MDCard:
+            id: emodji
+            size_hint: None, None
+            size: dp(150), dp(150)
+            border_radius: 100
+            radius: [100]
+            elevation: 0
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            FitImage:
+                source: 'templates/images/avatar.png'
+        Widget:
+            size_hint: None, None
+            height: dp(20)
+        MDRoundFlatButton:
+            text: "Вход"
+            text_color: 0, 0, 0, 1
+            size_hint: 0.5, None
+            size: dp(10), dp(40)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            on_release: root.animation_auth(welcome_form, auth_form)
+        Widget:
+            size_hint: None, None
+            height: dp(20)
+        MDFlatButton:
+            text: "Регистрация"
+            text_color: 0, 0, 0, 1
+            size_hint: 0.5, None
+            size: dp(10), dp(40)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            on_release: app.go_to_registration(root)
+
+    Widget:
+
+<Registration>
+    id: registration
+    orientation: 'vertical'
+    Widget:
+    MDTextField:
+        hint_text: "Введите Ваши ФИО*"
+        mode: "rectangle"
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+        size_hint: None, None
+        height: dp(20)
+    MDTextField:
+        hint_text: "Введите Ваши e-mail*"
+        mode: "rectangle"
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+        size_hint: None, None
+        height: dp(20)
+    MDTextField:
+        hint_text: "Введите Ваши телефон*"
+        mode: "rectangle"
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+        size_hint: None, None
+        height: dp(20)
+    MDFlatButton:
+        text: 'Отправить данные'
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+
+<Main>:
+    orientation: 'vertical'
+    Widget:
+    Widget:
+
+<Settings>:
+    id: settings
+    orientation: 'vertical'
+    Widget:
+    MDTextField:
+        hint_text: "Введите Ваши ФИО*"
+        mode: "rectangle"
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+        size_hint: None, None
+        height: dp(20)
+    MDTextField:
+        hint_text: "Введите Ваши e-mail*"
+        mode: "rectangle"
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+        size_hint: None, None
+        height: dp(20)
+    MDTextField:
+        hint_text: "Введите Ваши телефон*"
+        mode: "rectangle"
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+        size_hint: None, None
+        height: dp(20)
+    MDFlatButton:
+        text: 'Отправить данные'
+        size_hint: .5, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    Widget:
+
+<Messenger>:
+    id: messenger
+    orientation: 'horizontal'
+    BoxLayout:
+        canvas:
+            Color:
+                rgb: 0,1,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        pos_hint: {'center_x': 1, 'center_y': 1}
+        size_hint: 1, 1
+        orientation: 'vertical'
+        size_hint: .3, None
+        MDTextField:
+            hint_text: "Введите Ваши телефон*"
+            mode: "rectangle"
+            size_hint: .5, None
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+    BoxLayout:
+        canvas:
+            Color:
+                rgb: 1,1,.9
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        pos_hint: {'center_x': 1, 'center_y': 1}
+        orientation: 'vertical'
+        size_hint: .7, None
+        MDTextField:
+            hint_text: "222 Ваши телефон*"
+            mode: "rectangle"
+            size_hint: .5, None
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+Screen:
+    name: 'body'
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0.05
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    NavigationLayout:
+        x: screen_manager.height
+        ScreenManager:
+            id: screen_manager
+            Screen:
+                name: 'home'
+                Messenger:
+            Screen:
+                name: 'registration'
+                Registration:
+            Screen:
+                name: 'main'
+                Main:
+            Screen:
+                name: 'settings'
+                Settings:
+            Screen:
+                name: 'messenger'
+                Messenger:
